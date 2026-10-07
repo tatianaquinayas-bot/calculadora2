@@ -24,8 +24,31 @@ public ControladorCalculadora(VistaCalculadora vista, ModeloCalculadora modelo) 
         this.vista.agregarListener(this);
     }
  
-    @Override
+       @Override
     public void actionPerformed(ActionEvent e) {
         String comando = e.getActionCommand();
+        try {
+            if (comando.matches("[0-9]") || comando.equals(".")) {
+                manejarNumero(comando);
+            }
+        } catch (ArithmeticException | NumberFormatException ex) {
+            vista.setPantalla("Error");
+            reiniciarEstado();
+        }
+    }
+        private void manejarNumero(String digito) {
+        String actual = vista.getPantalla();
+        if (nuevoNumero || actual.equals("0") || actual.equals("Error")) {
+            vista.setPantalla(digito.equals(".") ? "0." : digito);
+            nuevoNumero = false;
+        } else if (!(digito.equals(".") && actual.contains("."))) {
+            vista.setPantalla(actual + digito);
+        }
+    }
+
+    private void reiniciarEstado() {
+        primerNumero = 0;
+        operacion = "";
+        nuevoNumero = true;
     }
 }
