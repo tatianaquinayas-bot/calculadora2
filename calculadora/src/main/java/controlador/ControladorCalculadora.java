@@ -17,4 +17,15 @@ public class ControladorCalculadora implements ActionListener {
     private double primerNumero = 0;
     private String operacion = "";
     private boolean nuevoNumero = true;
+
+public ControladorCalculadora(VistaCalculadora vista, ModeloCalculadora modelo) {
+        this.vista = vista;
+        this.modelo = modelo;
+        this.vista.agregarListener(this);
+    }
+ 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String comando = e.getActionCommand();
+    }
 }
