@@ -41,13 +41,13 @@ public class VistaCalculadora extends JFrame {
                 JPanel panelEspeciales = new JPanel(new GridLayout(1, 4, 5, 5));
         panelEspeciales.add(crearBoton("C", "C"));
         panelEspeciales.add(crearBoton("√", "sqrt"));
-        panelEspeciales.add(crearBoton("∛", "cbrt"));
+        panelEspeciales.add(crearBoton("3√", "cbrt"));
         panelEspeciales.add(crearBoton("ln", "ln"));
         add(panelEspeciales, BorderLayout.SOUTH);
         
                 pantalla.setPreferredSize(new Dimension(300, 70));
         pantalla.setBackground(Color.BLACK);
-        pantalla.setForeground(Color.GREEN);
+        pantalla.setForeground(Color.PINK);
         for (JButton b : botones) {
             b.setFocusPainted(false);
             b.setBackground(new Color(230, 230, 230));
