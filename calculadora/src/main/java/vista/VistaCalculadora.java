@@ -1,13 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package vista;
 
-/**
- *
- * @author 57323
- */
-public class VistaCalculadora {
-    
+import javax.swing.JFrame;
+
+public class VistaCalculadora extends JFrame {
+
+    public VistaCalculadora() {
+        setTitle("Calculadora");
+        setSize(320, 420);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+    }
 }
