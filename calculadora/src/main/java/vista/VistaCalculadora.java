@@ -1,13 +1,43 @@
 package vista;
 
-import javax.swing.JFrame;
+import java.awt.*;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.*;
 
 public class VistaCalculadora extends JFrame {
+
+    private JTextField pantalla;
+    private JPanel panelNumeros;
+    private List<JButton> botones = new ArrayList<>();
 
     public VistaCalculadora() {
         setTitle("Calculadora");
         setSize(320, 420);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+        setLayout(new BorderLayout(5, 5));
+
+        pantalla = new JTextField("0");
+        pantalla.setEditable(false);
+        pantalla.setHorizontalAlignment(JTextField.RIGHT);
+        pantalla.setFont(new Font("Arial", Font.BOLD, 28));
+        add(pantalla, BorderLayout.NORTH);
+
+        panelNumeros = new JPanel(new GridLayout(4, 3, 5, 5));
+        String[] teclas = {"7","8","9","4","5","6","1","2","3","0",".","="};
+        for (String t : teclas) {
+            panelNumeros.add(crearBoton(t, t));
+        }
+        add(panelNumeros, BorderLayout.CENTER);
+    }
+
+    private JButton crearBoton(String texto, String comando) {
+        JButton b = new JButton(texto);
+        b.setActionCommand(comando);
+        b.setFont(new Font("Arial", Font.BOLD, 18));
+        botones.add(b);
+        return b;
     }
 }
