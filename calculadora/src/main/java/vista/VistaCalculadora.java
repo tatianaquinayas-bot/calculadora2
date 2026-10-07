@@ -31,6 +31,12 @@ public class VistaCalculadora extends JFrame {
             panelNumeros.add(crearBoton(t, t));
         }
         add(panelNumeros, BorderLayout.CENTER);
+                JPanel panelOperaciones = new JPanel(new GridLayout(4, 1, 5, 5));
+        panelOperaciones.add(crearBoton("÷", "/"));
+        panelOperaciones.add(crearBoton("×", "*"));
+        panelOperaciones.add(crearBoton("−", "-"));
+        panelOperaciones.add(crearBoton("+", "+"));
+        add(panelOperaciones, BorderLayout.EAST);
     }
 
     private JButton crearBoton(String texto, String comando) {
