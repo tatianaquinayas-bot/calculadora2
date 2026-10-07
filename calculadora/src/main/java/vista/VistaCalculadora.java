@@ -44,6 +44,14 @@ public class VistaCalculadora extends JFrame {
         panelEspeciales.add(crearBoton("∛", "cbrt"));
         panelEspeciales.add(crearBoton("ln", "ln"));
         add(panelEspeciales, BorderLayout.SOUTH);
+        
+                pantalla.setPreferredSize(new Dimension(300, 70));
+        pantalla.setBackground(Color.BLACK);
+        pantalla.setForeground(Color.GREEN);
+        for (JButton b : botones) {
+            b.setFocusPainted(false);
+            b.setBackground(new Color(230, 230, 230));
+        }
     }
 
     private JButton crearBoton(String texto, String comando) {
@@ -52,5 +60,22 @@ public class VistaCalculadora extends JFrame {
         b.setFont(new Font("Arial", Font.BOLD, 18));
         botones.add(b);
         return b;
+    }
+        public void agregarListener(ActionListener l) {
+        for (JButton b : botones) {
+            b.addActionListener(l);
+        }
+    }
+
+    public String getTextoPantalla() {
+        return pantalla.getText();
+    }
+
+    public void setTextoPantalla(String texto) {
+        pantalla.setText(texto);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> new VistaCalculadora().setVisible(true));
     }
 }
