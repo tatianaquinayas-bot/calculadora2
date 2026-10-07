@@ -24,10 +24,10 @@ public ControladorCalculadora(VistaCalculadora vista, ModeloCalculadora modelo) 
         this.vista.agregarListener(this);
     }
  
-       @Override
+         @Override
     public void actionPerformed(ActionEvent e) {
         String comando = e.getActionCommand();
-                try {
+        try {
             if (comando.matches("[0-9]") || comando.equals(".")) {
                 manejarNumero(comando);
             } else if (comando.matches("[+\\-*/]")) {
@@ -36,6 +36,8 @@ public ControladorCalculadora(VistaCalculadora vista, ModeloCalculadora modelo) 
                 calcularResultado();
             } else if (comando.equals("C")) {
                 limpiar();
+            } else if (comando.equals("sqrt") || comando.equals("cbrt") || comando.equals("ln")) {
+                operacionUnaria(comando);
             }
         } catch (ArithmeticException | NumberFormatException ex) {
             vista.setPantalla("Error");
@@ -91,5 +93,12 @@ public ControladorCalculadora(VistaCalculadora vista, ModeloCalculadora modelo) 
         } else {
             vista.setPantalla(String.valueOf(resultado));
         }
+    }
+    private void operacionUnaria(String op) {
+        double valor = Double.parseDouble(vista.getPantalla());
+        double resultado = modelo.calcular(op, valor, 0);
+        mostrar(resultado);
+        nuevoNumero = true;
+    
     }
 }
